@@ -60,7 +60,11 @@ class Post extends HTMLElement {
     const storageValue = JSON.parse(localStorage.getItem('favorites'))
     const id = this.getAttribute('postID')
 
-   
+    if (storageValue.indexOf(id) != -1) {
+      const favorites = storageValue.filter(postID => postID != id)
+      localStorage.setItem('favorites', JSON.stringify(favorites))
+    }
+
     this.remove()
   }
   
