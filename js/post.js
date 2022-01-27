@@ -68,24 +68,6 @@ class Post extends HTMLElement {
     this.remove()
   }
   
-  connectedCallback() {
-    this.className = "col col-md-4 mt-4"
-    this.shadowRoot.querySelector('.card-title').innerHTML = this.getAttribute('title')
-    this.shadowRoot.querySelector('.card-text').innerHTML = this.getAttribute('text')
-
-    const star = this.shadowRoot.querySelector('#star')
-    const trash = this.shadowRoot.querySelector('#trash')
-
-    const storageValue = JSON.parse(localStorage.getItem('favorites'))
-    const id = this.getAttribute('postID')
-
-    if ( storageValue !== null && storageValue.indexOf(id) != -1) {
-      star.className = "bi bi-star-fill"
-    }
-
-    star.addEventListener('click', this.star)
-    trash.addEventListener('click', this.trash)
-  }
 
   disconnectedCallback() {
     const star = this.shadowRoot.querySelector('#star')
